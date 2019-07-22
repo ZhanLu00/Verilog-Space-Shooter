@@ -57,14 +57,14 @@ module datapath_enemy(
 			hold <= 0;
 		end
 		else if (enable_delay) begin
-			if (delay_count == 10'd833333) begin //should be 833333
+			if (delay_count == 10'd2) begin //should be 833333
 				delay_count <= 0;
 				frame <= frame + 1;
 			end
 			else
 				delay_count <= delay_count + 1;
 
-			if (frame == 4'b1111) 
+			if (frame == 4'b1111) //should be 1111 in bin
 				hold <= 1;		
 			end					
 	end
@@ -95,7 +95,7 @@ module datapath_enemy(
 			done <= 0;		
 		end
 		
-		else if (countX == 4'b1001) begin //(was 153 or something)
+		else if (countX == 4'b1001) begin //(4'b1001 == 10)
 				countX <= 0;
 				countY <= countY + 1;
 		end
@@ -107,8 +107,8 @@ module datapath_enemy(
 		end
 	end
 
-	assign x_out = x + countX[3:0];
-	assign y_out = y + countY[3:0];
+	assign x_out = x;
+	assign y_out = y;
 	assign colour_out = colour_reg;
 
 endmodule
