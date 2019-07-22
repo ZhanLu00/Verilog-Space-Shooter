@@ -1,8 +1,11 @@
-module drawFSM(mainDrawSignal, clk, resetn, done, enable);
-    input done, clk, resetn;
+module drawFSM(
+    input done, clk, resetn,
+    output [3:0] mainDrawSignal);
+
+
     //output drawPlayer, drawEnemy1, drawEnemy2, drawEnemy3, drawEnemy4, drawBullet;
 
-    output [3:0] mainDrawSignal;
+
     reg [3:0] drawSignalOut;
 
     output enable;

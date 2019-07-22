@@ -24,31 +24,31 @@ module main(
     wire done_out, enable_draw;
 
 		
-		//VGA Code
-		wire [7:0] x;
-		wire [6:0] y;
-		wire [2:0] colour_out;
-		
-		vga_adapter VGA(
-			.resetn(resetn),
-			.clock(clk),
-			.colour(colour_out),
-			.x(x),
-			.y(y),
-			.plot(writeEn),
-			/* Signals for the DAC to drive the monitor. */
-			.VGA_R(VGA_R),
-			.VGA_G(VGA_G),
-			.VGA_B(VGA_B),
-			.VGA_HS(VGA_HS),
-			.VGA_VS(VGA_VS),
-			.VGA_BLANK(VGA_BLANK_N),
-			.VGA_SYNC(VGA_SYNC_N),
-			.VGA_CLK(VGA_CLK));
-		defparam VGA.RESOLUTION = "160x120";
-		defparam VGA.MONOCHROME = "FALSE";
-		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
-		defparam VGA.BACKGROUND_IMAGE = "black.mif";
+    //VGA Code
+    wire [7:0] x;
+    wire [6:0] y;
+    wire [2:0] colour_out;
+        
+    vga_adapter VGA(
+        .resetn(resetn),
+        .clock(clk),
+        .colour(colour_out),
+        .x(x),
+        .y(y),
+        .plot(writeEn),
+        /* Signals for the DAC to drive the monitor. */
+        .VGA_R(VGA_R),
+        .VGA_G(VGA_G),
+        .VGA_B(VGA_B),
+        .VGA_HS(VGA_HS),
+        .VGA_VS(VGA_VS),
+        .VGA_BLANK(VGA_BLANK_N),
+        .VGA_SYNC(VGA_SYNC_N),
+        .VGA_CLK(VGA_CLK));
+    defparam VGA.RESOLUTION = "160x120";
+    defparam VGA.MONOCHROME = "FALSE";
+    defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
+    defparam VGA.BACKGROUND_IMAGE = "black.mif";
 
     //Keyboard
     wire aPressed, dPressed, sPressed, wPressed, leftPressed, rightPressed, upPressed, downPressed, spacePressed, enterPressed;
