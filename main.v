@@ -130,13 +130,39 @@ module main(
 
     //player movement FSM
     wire ld_pos1, ld_pos2, ld_pos3, ld_pos4, inEraseState, inDrawState;
-    playerMovementFSM playerMovement(clk, resetn, ld_pos1, ld_pos2, ld_pos3, ld_pos4, inEraseState, inDrawState, aPressed, dPressed);
+    playerMovementFSM c1(
+        .clk(clk),
+        .resetn(resetn), 
+        .ld_pos1(ld_pos1), 
+        .ld_pos2(ld_pos2), 
+        .ld_pos3(ld_pos3), 
+        .ld_pos4(ld_pos4), 
+        .inEraseState(inEraseState), 
+        .inDrawState(inDrawState), 
+        .aPressed(aPressed), 
+        .dPressed(dPressed)
+    );
+    
+    
 
     //player datapath
     wire [7:0] playerX;
     wire [6:0] playerY;
     wire [2:0] playerColour;
-    playData playerData(ld_pos1, ld_pos2, ld_pos3, ld_pos4, clk, resetn, inEraseState, inDrawState, 3'b111, playerX, playerY, playerColour);
+
+    playData p1(
+        .ld_1(ld_pos1),
+        .ld_2(ld_pos2),
+        .ld_3(ld_pos3),
+        .ld_4(ld_pos4),
+        .clock(clock), 
+        .reset(resetn),
+        .erase(inEraseState),
+        .draw(inDrawState),
+        .x_out(playerX),
+        .y_out(playery),
+        .color_out(playerColour)
+    );
 
     //Enemy
     wire [7:0] eX0, eX1, eX2, eX3;
