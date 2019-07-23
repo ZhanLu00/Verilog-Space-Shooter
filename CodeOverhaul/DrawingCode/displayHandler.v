@@ -76,6 +76,16 @@ module displayHandler(
     end
 
 	 //module that produces coordinates that are to be sent to the vga
+	 wire [7:0] vgaXOut; //wire to be assigned to vgaX
+	 wire [6:0] vgaYOut; //wire to be assigned to vgaY
+	 wire [2:0] vgaColourOut; //wire to be assigned to vgaColour
+	 wire doneOut; //wire to be assigned to fsmDoneSignal
+	 
 	 draw mainDrawModule(.x_in(drawX), .y_in(drawY), .width(drawWidth), .height(drawHeight), .c_in(drawColour), .enable(1'b1) /*this has to potentially be changed*/, .clk(clk), .reset(reset),
-								.x_out(vgaX), .y_out(vgaY), .c_out(vgaColour), .done(fsmDoneSignal));
+								.x_out(vgaXOut), .y_out(vgaYOut), .c_out(vgaColourOut), .done(doneOut));
+								
+	 assign vgaX = vgaXOut;
+	 assign vgaY = vgaYOut;
+	 assign vgaColour = vgaColourOut;
+	 assign fsmDoneSignal = doneOut;
 endmodule

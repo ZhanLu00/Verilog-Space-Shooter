@@ -42,6 +42,8 @@ module draw(
             done_ <= 0;
         end
         else if (enable) begin
+				xOut <= x_in;
+            yOut <= y_in;
 				if (counterX == 0 && counterY == 0)
 					done_ <= 0;
 		  
