@@ -17,5 +17,5 @@ run 20ns
 
 #Test draw a 10x10 starting from (30, 40) box in colour 2#101 (testing whether output coordinates and colour are correct)
 force clk 0 0ns, 1 10ns -r 20ns
-force enable 1 20ns
+force enable 1 20ns, 0 2030ns
 run 3000ns
