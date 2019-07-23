@@ -42,6 +42,9 @@ module draw(
             done_ <= 0;
         end
         else if (enable) begin
+				if (counterX == 0 && counterY == 0)
+					done_ <= 0;
+		  
             if (counterX == width - 1) begin
                counterX <= 0; 
 					counterY <= counterY + 1; 
@@ -50,12 +53,12 @@ module draw(
 						done_ <= 1'b1; 
 						counterY <= 0;
 					end
-					else
-						done_ <= 1'b0;
 				end
 				else if (counterX < width)
                 counterX <= counterX + 1;
         end
+		  else //if the module is not enabled, it cannot be done drawing
+				done_ <= 0;
     end
 
 	 //assigning wires and registers to their corresponding outputs
