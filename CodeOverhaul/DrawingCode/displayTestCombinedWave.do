@@ -3,6 +3,9 @@ vlog -timescale 1ns/1ns displayTestCombined.v
 vsim displayTestCombined
 log {/*}
 add wave {/*}
+#add wave {/displayTestCombined/drawController/*}
+#add wave {/displayTestCombined/handler/*}
+add wave {/displayTestCombined/handler/mainDrawModule/*}
 
 #RESET
 force clk 0 0ns, 1 10ns
