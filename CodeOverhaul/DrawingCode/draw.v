@@ -1,3 +1,21 @@
+/*
+Module that outputs the coordinates of an object being draw based on the (x, y) of top-left corner and the object's width and height.
+
+x_in: The x coordinate of top-left corner of object being drawn
+y_in: The y coordinate of top-left corner of object being drawn
+width: The width of the object in binary
+height: The height of the object in binary
+c_in: The colour to draw the object in
+draw: 
+clk: Circuit clock signal
+reset: Circuit reset signal (active low)
+
+x_out: The x coordinate of the current pixel to draw
+y_out: The y coordinate of the current pixel to draw
+c_out: The colour of the current pixel to draw 
+done: Whether the module is done outputting the coordinates for the current object or not
+*/
+
 module draw(
     input [7:0] x_in,
     input [6:0] y_in,
@@ -9,11 +27,11 @@ module draw(
     output [2:0] c_out,
     output done
 );
-    reg [7:0] counterX, xOut; 
-    reg [6:0] counterY, yOut;
-    reg done_;
+    reg [7:0] counterX, xOut; //placeholder for x_out and the counter assosciated with it
+    reg [6:0] counterY, yOut; //placeholder for y_out and the counter assosciated with it
+    reg done_;						//placeholder for the done output signal
 
-
+	 //Draw logic
     always @(posedge clk)
     begin
         if (!reset) begin
@@ -34,6 +52,7 @@ module draw(
 
     end
 
+	 //assigning wires and registers to their corresponding outputs
     assign x_out = xOut + counterX;
     assign y_out = yOut + counterY;
     assign done = done_;
