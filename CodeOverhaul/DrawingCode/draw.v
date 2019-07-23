@@ -50,8 +50,10 @@ module draw(
             else if (counterX < width)
                 counterX <= counterX + 1; 
 
-            if (counterY == height) begin
-                done_ <= 1'b1; end
+            if (counterY == height)
+                done_ <= 1'b1; 
+				else
+					done_ <= 1'b0;
         end
 
     end
@@ -60,5 +62,6 @@ module draw(
     assign x_out = xOut + counterX;
     assign y_out = yOut + counterY;
     assign done = done_;
+	 assign c_out = c_in;
 
 endmodule
