@@ -42,22 +42,20 @@ module draw(
             done_ <= 0;
         end
         else if (enable) begin
-            if (counterX == width) begin
-                counterX <= 0; 
-                counterY <= counterY + 1; 
-			   end
-				
-            else if (counterX < width)
-                counterX <= counterX + 1; 
-
-            if (counterY == height + 1) begin
-                done_ <= 1'b1; 
-					 counterY <= 0;
-			   end
-				else
-					done_ <= 1'b0;
+            if (counterX == width - 1) begin
+               counterX <= 0; 
+					counterY <= counterY + 1; 
+					 
+					if (counterY == height - 1) begin
+						done_ <= 1'b1; 
+						counterY <= 0;
+					end
+					else
+						done_ <= 1'b0;
+				end
+				else if (counterX < width)
+                counterX <= counterX + 1;
         end
-
     end
 
 	 //assigning wires and registers to their corresponding outputs
