@@ -32,12 +32,13 @@ module displayHandler(
     input [6:0] p_y, e0_y, e1_y, e2_y, e3_y,
     input [4:0] p_w, p_h, e_w, e_h,
     input [2:0] p_c, e_c0, e_c1, e_c2, e_c3,
-    input clk, draw, reset,
+    input clk, enableLoad, reset,
     input [3:0] control_signal,
     output [7:0] vgaX,
 	 output [6:0] vgaY,
 	 output [2:0] vgaColour,
-	 output fsmDoneSignal
+	 output fsmDoneSignal,
+	 input enableDraw
 );
 
 
@@ -66,12 +67,12 @@ module displayHandler(
     always @(*)
     begin 
         case (control_signal)
-            0: begin drawX <= px; drawY <= py; drawWidth <= pw; drawHeight <= ph; drawColour <= pc; end //player
-            1: begin drawX <= e0x; drawY <= e0y; drawWidth <= ew; drawHeight <= eh; drawColour <= e0c; end //e1
-            2: begin drawX <= e1x; drawY <= e1y; drawWidth <= ew; drawHeight <= eh; drawColour <= e1c; end //e2
-            3: begin drawX <= e2x; drawY <= e2y; drawWidth <= ew; drawHeight <= eh; drawColour<= e2c; end //e3
-            4: begin drawX <= e3x; drawY <= e3y; drawWidth <= ew; drawHeight <= eh; drawColour <= e3c; end //e4
-	    default: begin drawX <= px; drawY <= py; drawWidth <= pw; drawHeight <= ph; drawColour <= pc; end
+            1: begin drawX <= px; drawY <= py; drawWidth <= pw; drawHeight <= ph; drawColour <= pc; end //player
+            2: begin drawX <= e0x; drawY <= e0y; drawWidth <= ew; drawHeight <= eh; drawColour <= e0c; end //e1
+            3: begin drawX <= e1x; drawY <= e1y; drawWidth <= ew; drawHeight <= eh; drawColour <= e1c; end //e2
+            4: begin drawX <= e2x; drawY <= e2y; drawWidth <= ew; drawHeight <= eh; drawColour<= e2c; end //e3
+            5: begin drawX <= e3x; drawY <= e3y; drawWidth <= ew; drawHeight <= eh; drawColour <= e3c; end //e4
+				default: begin drawX <= px; drawY <= py; drawWidth <= pw; drawHeight <= ph; drawColour <= pc; end
         endcase
     end
 
@@ -81,8 +82,8 @@ module displayHandler(
 	 wire [2:0] vgaColourOut; //wire to be assigned to vgaColour
 	 wire doneOut; //wire to be assigned to fsmDoneSignal
 	 
-	 draw mainDrawModule(.x_in(drawX), .y_in(drawY), .width(drawWidth), .height(drawHeight), .c_in(drawColour), .enable(1'b1) /*this has to potentially be changed*/, .clk(clk), .reset(reset),
-								.x_out(vgaXOut), .y_out(vgaYOut), .c_out(vgaColourOut), .done(doneOut));
+	 draw mainDrawModule(.x_in(drawX), .y_in(drawY), .width(drawWidth), .height(drawHeight), .c_in(drawColour), .enableLoad(enableLoad) /*this has to potentially be changed*/, .clk(clk), .reset(reset),
+								.x_out(vgaXOut), .y_out(vgaYOut), .c_out(vgaColourOut), .done(doneOut), .enableDraw(enableDraw));
 								
 	 assign vgaX = vgaXOut;
 	 assign vgaY = vgaYOut;
