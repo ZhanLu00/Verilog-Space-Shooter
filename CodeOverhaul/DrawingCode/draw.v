@@ -6,7 +6,7 @@ y_in: The y coordinate of top-left corner of object being drawn
 width: The width of the object in binary
 height: The height of the object in binary
 c_in: The colour to draw the object in
-draw: 
+enable: The enable signal for the module 
 clk: Circuit clock signal
 reset: Circuit reset signal (active low)
 
@@ -21,7 +21,7 @@ module draw(
     input [6:0] y_in,
     input [4:0] width, height,
     input [2:0] c_in,
-    input draw, clk, reset,
+    input enable, clk, reset,
     output [7:0] x_out,
     output [6:0] y_out,
     output [2:0] c_out,
@@ -39,12 +39,14 @@ module draw(
             yOut <= y_in;
             done_ <= 0;
         end
-        else if (draw) begin
-            if (counterX == (width-1)) begin
+        else if (enable) begin
+            if (counterX == width) begin
                 counterX <= 0; 
-                counterY <= counterY + 1; end
-            else if (counterX < (width-1)) begin
-                counterX <= counterX + 1; end
+                counterY <= counterY + 1; 
+			   end
+				
+            else if (counterX < width)
+                counterX <= counterX + 1; 
 
             if (counterY == height) begin
                 done_ <= 1'b1; end
