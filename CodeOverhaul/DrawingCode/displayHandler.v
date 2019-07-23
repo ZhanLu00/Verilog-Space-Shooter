@@ -78,8 +78,4 @@ module displayHandler(
 	 //module that produces coordinates that are to be sent to the vga
 	 draw mainDrawModule(.x_in(drawX), .y_in(drawY), .width(drawWidth), .height(drawHeight), .c_in(drawColour), .enable(1'b1) /*this has to potentially be changed*/, .clk(clk), .reset(reset),
 								.x_out(vgaX), .y_out(vgaY), .c_out(vgaColour), .done(fsmDoneSignal));
-	 
-	 
-    
-
 endmodule
