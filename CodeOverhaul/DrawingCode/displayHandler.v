@@ -1,3 +1,32 @@
+/*
+Module that acts as a datapath for the drawing FSM and decides which coordinates should be currently sent to the VGA.
+
+
+p_x: x coordinate of top left corner of player
+e0_x: x coordinate of top left corner of first enemeny
+e1_x: x coordinate of top left corner of second enemy
+e2_x: x coordinate of top left corner of third enemy
+e3_x: x coordinate of top left corner of fourth enemy
+p_y: y coordinate of top left corner of player
+e0_y: y coordinate of top left corner of first enemy 
+e1_y: y coordinate of top left corner of second enemy
+e2_y: y coordinate of top left corner of third enemy
+e3_y: y coordinate of top left corner of fourth enemy
+p_c: player colour
+e_c0: first enemy colour
+e_c1: second enemy colour
+e_c2: third enemy colour
+e_c3: fourth enemy colour
+clk: circuit clock signal
+draw: 
+reset: reset signal (active low)
+control_signal: determines the coordinates of what object (out of the ones listed above) should be sent to the VGA
+
+vgaX: output signal for the x coordinates going to the VGA
+vgaY: output signal for the y coordinates going to the VGA
+vgaColour: output signal for the colour of the pixel being drawn to the VGA
+fsmDoneSignal: signal that goes to drawFSM to tell it that the current object is done drawing and the state can be switched
+*/
 module displayHandler(
     input [7:0] p_x, e0_x, e1_x, e2_x, e3_x,
     input [6:0] p_y, e0_y, e1_y, e2_y, e3_y,
@@ -5,24 +34,24 @@ module displayHandler(
     input [2:0] p_c, e_c0, e_c1, e_c2, e_c3,
     input clk, draw, reset,
     input [3:0] control_signal,
-    output [7:0] start_x, 
-    output [6:0] start_y, 
-    output [4:0] width, height,
-    output [2:0] color
+    output [7:0] vgaX,
+	 output [6:0] vgaY,
+	 output [2:0] vgaColour,
+	 output fsmDoneSignal
 );
 
 
-    reg [7:0] px, e0x, e1x, e2x, e3x;
-    reg [6:0] py, e0y, e1y, e2y, e3y;
-    reg [4:0] pw, ph, ew, eh;
-    reg [2:0] pc, e0c, e1c, e2c, e3c;
+    reg [7:0] px, e0x, e1x, e2x, e3x; //x coordinates of top left corner of in-game objects
+    reg [6:0] py, e0y, e1y, e2y, e3y; //y coordinates of top left corner of in-game objects
+    reg [4:0] pw, ph, ew, eh; //width and height of the player and the enemy
+    reg [2:0] pc, e0c, e1c, e2c, e3c; //colours of each enemy and player
 
-    reg [7:0] x_out;
-    reg [6:0] y_out;
-    reg [4:0] w_out, h_out;
-    reg [2:0] c_out;
+    reg [7:0] drawX; //x coordinate of top left corner of the object being drawn
+    reg [6:0] drawY; //y coordinate of the top left corner of the object being drawn
+    reg [4:0] drawWidth, drawHeight; //width and height of the object being drawn
+    reg [2:0] drawColour; //colour of the object being drawn
 
-    // register
+    //logic that decides which object to draw
     always @(posedge clk)
     begin
         if (!reset) begin
@@ -37,20 +66,20 @@ module displayHandler(
     always @(*)
     begin 
         case (control_signal)
-            0: begin x_out <= px; y_out <= py; w_out <= pw; h_out <= ph; c_out <= pc; end
-            1: begin x_out <= e0x; y_out <= e0y; w_out <= ew; h_out <= eh; c_out <= e0c; end
-            2: begin x_out <= e1x; y_out <= e1y; w_out <= ew; h_out <= eh; c_out <= e1c; end
-            3: begin x_out <= e2x; y_out <= e2y; w_out <= ew; h_out <= eh; c_out <= e2c; end
-            4: begin x_out <= e3x; y_out <= e3y; w_out <= ew; h_out <= eh; c_out <= e3c; end
-	    default: begin x_out <= px; y_out <= py; w_out <= pw; h_out <= ph; c_out <= pc; end
+            0: begin drawX <= px; drawY <= py; drawWidth <= pw; drawHeight <= ph; drawColour <= pc; end //player
+            1: begin drawX <= e0x; drawY <= e0y; drawWidth <= ew; drawHeight <= eh; drawColour <= e0c; end //e1
+            2: begin drawX <= e1x; drawY <= e1y; drawWidth <= ew; drawHeight <= eh; drawColour <= e1c; end //e2
+            3: begin drawX <= e2x; drawY <= e2y; drawWidth <= ew; drawHeight <= eh; drawColour<= e2c; end //e3
+            4: begin drawX <= e3x; drawY <= e3y; drawWidth <= ew; drawHeight <= eh; drawColour <= e3c; end //e4
+	    default: begin drawX <= px; drawY <= py; drawWidth <= pw; drawHeight <= ph; drawColour <= pc; end
         endcase
     end
 
-    assign start_x = x_out;
-    assign start_y = y_out;
-    assign width = w_out;
-    assign height = h_out;
-    assign color = c_out;
+	 //module that produces coordinates that are to be sent to the vga
+	 draw mainDrawModule(.x_in(drawX), .y_in(drawY), .width(drawWidth), .height(drawHeight), .c_in(drawColour), .enable(1'b1) /*this has to potentially be changed*/, .clk(clk), .reset(reset),
+								.x_out(vgaX), .y_out(vgaY), .c_out(vgaColour), .done(fsmDoneSignal));
+	 
+	 
     
 
 endmodule
