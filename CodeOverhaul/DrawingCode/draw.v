@@ -35,6 +35,8 @@ module draw(
     always @(posedge clk)
     begin
         if (!reset) begin
+		      counterX <= 0;
+				counterY <= 0;
             xOut <= x_in;
             yOut <= y_in;
             done_ <= 0;
