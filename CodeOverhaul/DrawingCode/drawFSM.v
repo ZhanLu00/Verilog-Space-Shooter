@@ -12,6 +12,8 @@ mainDrawSignal: binary value representing which object to draw
 					4: Enemy 3
 					5: Enemy 4
 					6: Bullet
+enableDraw: whether the VGA should have its plot on or off
+enableLoad: controls whether the displayHandler should be loading in new starting coordinates or not
 */
 
 module drawFSM(done, clk, resetn, mainDrawSignal, enableDraw, enableLoad);
