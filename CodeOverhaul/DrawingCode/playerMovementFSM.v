@@ -1,10 +1,29 @@
+/*
+FSM that controls the current state that the player is in.
+
+clk: Main circuit clock signal
+resetn: Reset signal (active low)
+
+ld_pos1: Control signal for changing player position to POS1 (should be connected to datapath)
+ld_pos2: Control signal for changing player position to POS2 (should be connected to datapath)
+ld_pos3: Control signal for changing player position to POS3 (should be connected to datapath)
+ld_pos4: Control signal for changing player position to POS4 (should be connected to datapath)
+inEraseState: Controls whether the player is in the erase state
+inDrawState: Controls whether the player is in the draw state
+
+aPressed: Whether the A key on the keyboard is pressed
+dPressed: Whether the D key on the keyboard is pressed
+*/
 module playerMovementFSM(clk, resetn, ld_pos1, ld_pos2, ld_pos3, ld_pos4, inEraseState, inDrawState, aPressed, dPressed);
 	input clk, resetn, aPressed, dPressed;
 	
 	output reg ld_pos1, ld_pos2, ld_pos3, ld_pos4, inEraseState, inDrawState;
 	
-	reg [3:0] current_state, next_state, previous_state, after_erase_state; 
-    	reg [7:0] drawCounter;
+	reg [3:0] current_state, next_state, previous_state, after_erase_state; //state registers
+																									/*previous_state stores the previous POS state of the FSM
+																									  after_erase_state stores the POS state to go to after being erased	
+																									*/
+   reg [7:0] drawCounter; //counter that determines whether the player is done drawing or not
 
    localparam  S_POS1 = 4'd0,						  
                S_POS2 = 4'd1,
@@ -97,17 +116,20 @@ module playerMovementFSM(clk, resetn, ld_pos1, ld_pos2, ld_pos3, ld_pos4, inEras
             drawCounter <= 8'd0;
         end
         else begin
-		  if (next_state != current_state && (current_state == S_POS1 || current_state == S_POS2 || current_state == S_POS3 || current_state == S_POS4))
-				previous_state <= current_state;
-				current_state <= next_state;
-		  end
-        if (current_state == S_ERASE || current_state == S_DRAW) begin
-            if (drawCounter < 8'd99)
-                drawCounter <= drawCounter + 1;
-            else
-                drawCounter <= 8'd0;
-        end
-    end // state_FFS
+			  //if switching from a POS state, store the current state in previous_state
+			  if (next_state != current_state && (current_state == S_POS1 || current_state == S_POS2 || current_state == S_POS3 || current_state == S_POS4))
+					previous_state <= current_state;
+					current_state <= next_state;
+			  end
+			  
+			  //update draw counter
+			  if (current_state == S_ERASE || current_state == S_DRAW) begin
+					if (drawCounter < 8'd99)
+						 drawCounter <= drawCounter + 1;
+					else
+						 drawCounter <= 8'd0;
+			  end
+		  end // state_FFS
 
 
 endmodule
