@@ -18,7 +18,7 @@ e_c1: second enemy colour
 e_c2: third enemy colour
 e_c3: fourth enemy colour
 clk: circuit clock signal
-draw: 
+enableLoad: Signal that controls loading of the next object's top-left corner coordinates into the draw module
 reset: reset signal (active low)
 control_signal: determines the coordinates of what object (out of the ones listed above) should be sent to the VGA
 
@@ -26,6 +26,8 @@ vgaX: output signal for the x coordinates going to the VGA
 vgaY: output signal for the y coordinates going to the VGA
 vgaColour: output signal for the colour of the pixel being drawn to the VGA
 fsmDoneSignal: signal that goes to drawFSM to tell it that the current object is done drawing and the state can be switched
+
+enableDraw: Signal that controls whether the draw module should start its counters (ie. begin drawing)
 */
 module displayHandler(
     input [7:0] p_x, e0_x, e1_x, e2_x, e3_x,
