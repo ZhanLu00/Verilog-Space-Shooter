@@ -6,7 +6,7 @@ y_in: The y coordinate of top-left corner of object being drawn
 width: The width of the object in binary
 height: The height of the object in binary
 c_in: The colour to draw the object in
-enable: The enable signal for the module 
+enableLoad: Controls whether this module will load in new starting coordinates in preparation for drawing a new object
 clk: Circuit clock signal
 reset: Circuit reset signal (active low)
 
@@ -14,6 +14,8 @@ x_out: The x coordinate of the current pixel to draw
 y_out: The y coordinate of the current pixel to draw
 c_out: The colour of the current pixel to draw 
 done: Whether the module is done outputting the coordinates for the current object or not
+
+enableDraw: controls when this module should enable its counters and when not
 */
 
 module draw(
