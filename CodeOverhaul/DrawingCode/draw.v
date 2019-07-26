@@ -33,6 +33,8 @@ module draw(
     reg [6:0] counterY, yOut; //placeholder for y_out and the counter assosciated with it
     reg done_;						//placeholder for the done output signal
 
+    reg start;
+
 	 //Draw logic
     always @(posedge clk)
     begin
@@ -45,14 +47,16 @@ module draw(
             xOut <= x_in;
             yOut <= y_in;
             done_ <= 0;
+            start <= 1;
         end
-        else if (enableLoad) begin
-				xOut <= x_in;
-            yOut <= y_in;
-		  end
+        
 		  else if (enableDraw) begin	
 				
-					if (xOut < 8'd180 && xOut >= 8'd0 && yOut <= 7'd127 && yOut >= 7'b0 && done_ == 0) begin //this is needed so that it starts counting at 30 and not 31 for example. Need a delay between loading in the values and starting to count
+					if (!start) begin 
+						start <= 1;
+						counterX<=0;
+						counterY<=0;
+					else if (start) begin
 						if (counterX == width - 1) begin
 							counterX <= 0; 
 							counterY <= counterY + 1; 
