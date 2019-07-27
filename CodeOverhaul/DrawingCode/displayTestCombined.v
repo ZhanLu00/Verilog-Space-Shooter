@@ -57,7 +57,7 @@ module displayHandler(
     input clk, enableLoad, reset,
     input [3:0] control_signal,
     output [7:0] vgaX,
-	 output [6:0] vgaY,
+	output [6:0] vgaY,
 	 output [2:0] vgaColour,
 	 output fsmDoneSignal,
 	 input enableDraw
