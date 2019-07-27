@@ -33,12 +33,13 @@ module playData(
 					x4 = 8'd134, //position 4
 					y  = 7'd99, //y stays constant
 					COLOR = 3'b111; //default colour is white
+                    NoCOLOR = 3'b000; // default erase color
 	
 	//logic for switching position and colour based on current state
 	always @(posedge clock)
 	begin
-		if (!reset) begin cout <= COLOR; xout <= x1; end // default for reset,  c =1, x = x1
-		else if (erase) begin cout <= 3'b0; xout <= xout; end // erase: color = 0, x = the last stored position
+		if (!reset) begin cout <= NoCOLOR; xout <= 8'b0; end // default for reset,  c =0, x=0
+		else if (erase) begin cout <= NoCOLOR; xout <= xout; end // erase: color = 0, x = the last stored position erase the current position
 		else if (draw) begin 
 			if (ld_1) begin xout <= x1; cout <= COLOR; end
 			if (ld_2) begin xout <= x2; cout <= COLOR; end
