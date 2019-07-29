@@ -1,0 +1,10 @@
+
+
+C:/Users/UserV/Desktop/School/SecondYear/258/Project/Version2 Files/QuartusProjectFile/csc258-project/CodeOverhaul/DrawingCode/Version3Code/EnemyWithPlayer/vga_pll.v
+
+Jul 28 12PM:13:01>: Error in CNX file format.
+
+Error messages are listed in file
+C:/Users/UserV/Desktop/School/SecondYear/258/Project/Version2 Files/QuartusProjectFile/csc258-project/CodeOverhaul/DrawingCode/Version3Code/EnemyWithPlayer/vga_pll.cnxerr.
+
+Can't create the custom megafunction variation file(s)
