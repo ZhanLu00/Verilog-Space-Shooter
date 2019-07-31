@@ -1,5 +1,5 @@
 Assembler report for main
-Mon Jul 29 10:45:10 2019
+Mon Jul 29 17:54:12 2019
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -10,7 +10,7 @@ Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/Users/UserV/Desktop/School/SecondYear/258/Project/Version2 Files/QuartusProjectFile/csc258-project/CodeOverhaul/DrawingCode/Version3Code/NewVersion/output_files/main.sof
+  5. Assembler Device Options: C:/Users/UserV/Desktop/School/SecondYear/258/Project/Version2 Files/QuartusProjectFile/258ProjectRepo/CurrentVersionTest/NewVersion/output_files/main.sof
   6. Assembler Messages
 
 
@@ -37,7 +37,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Mon Jul 29 10:45:10 2019 ;
+; Assembler Status      ; Successful - Mon Jul 29 17:54:12 2019 ;
 ; Revision Name         ; main                                  ;
 ; Top-level Entity Name ; main                                  ;
 ; Family                ; Cyclone V                             ;
@@ -52,23 +52,23 @@ refer to the applicable agreement for further details.
 +--------+---------+---------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Assembler Generated Files                                                                                                                                                    ;
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; File Name                                                                                                                                                                    ;
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; C:/Users/UserV/Desktop/School/SecondYear/258/Project/Version2 Files/QuartusProjectFile/csc258-project/CodeOverhaul/DrawingCode/Version3Code/NewVersion/output_files/main.sof ;
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Assembler Generated Files                                                                                                                                 ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; File Name                                                                                                                                                 ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; C:/Users/UserV/Desktop/School/SecondYear/258/Project/Version2 Files/QuartusProjectFile/258ProjectRepo/CurrentVersionTest/NewVersion/output_files/main.sof ;
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/UserV/Desktop/School/SecondYear/258/Project/Version2 Files/QuartusProjectFile/csc258-project/CodeOverhaul/DrawingCode/Version3Code/NewVersion/output_files/main.sof ;
-+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Option         ; Setting                                                                                                                                                                               ;
-+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x00E25B63                                                                                                                                                                            ;
-; Checksum       ; 0x00E25B63                                                                                                                                                                            ;
-+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/UserV/Desktop/School/SecondYear/258/Project/Version2 Files/QuartusProjectFile/258ProjectRepo/CurrentVersionTest/NewVersion/output_files/main.sof ;
++----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Option         ; Setting                                                                                                                                                            ;
++----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; JTAG usercode  ; 0x00E8525A                                                                                                                                                         ;
+; Checksum       ; 0x00E8525A                                                                                                                                                         ;
++----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +--------------------+
@@ -77,14 +77,14 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Mon Jul 29 10:45:01 2019
+    Info: Processing started: Mon Jul 29 17:54:04 2019
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off enemyWithPlayer -c main
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4858 megabytes
-    Info: Processing ended: Mon Jul 29 10:45:10 2019
-    Info: Elapsed time: 00:00:09
+    Info: Peak virtual memory: 4852 megabytes
+    Info: Processing ended: Mon Jul 29 17:54:12 2019
+    Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:08
 
 

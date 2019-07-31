@@ -713,4 +713,6 @@ set_global_assignment -name VERILOG_FILE LFSRPlus.v
 set_global_assignment -name VERILOG_FILE scoreUpdate.v
 set_global_assignment -name VERILOG_FILE decoder7.v
 set_global_assignment -name VERILOG_FILE healthUpdate.v
+set_global_assignment -name VERILOG_FILE LFSR.v
+set_global_assignment -name VERILOG_FILE binToDec.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

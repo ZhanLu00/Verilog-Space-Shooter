@@ -1,5 +1,5 @@
-module healthUpdate(clk, resetn, updateHealth, HEX);
-	input clk, resetn, updateHealth;
+module healthUpdate(clk, resetn, updateHealth, HEX, inUpdatePositionStateMain);
+	input clk, resetn, updateHealth, inUpdatePositionStateMain;
 	output [6:0] HEX;
 	
 	reg [3:0] health;
@@ -9,14 +9,18 @@ module healthUpdate(clk, resetn, updateHealth, HEX);
 		if (!resetn)
 			health <= 4'd10;
 		else begin
-			if (updateHealth)
-				health <= health - 1;
-			else
-				health <= health;
+			if (updateHealth && inUpdatePositionStateMain) begin
+				if(health > 0)
+					health <= health - 1;
+				else
+					health <= 4'd10;
+			end
 		end
-			
 	end
+	
+	
 
 	decoder7 scoreDisplay1(HEX, health[3:0]);
 	
 endmodule
+

@@ -1,10 +1,10 @@
-module main(CLOCK_50, KEY, VGA_CLK, VGA_HS, VGA_VS, VGA_BLANK_N, VGA_SYNC_N, VGA_R, VGA_G, VGA_B, PS2_CLK, PS2_DAT, HEX0, HEX1, HEX2, LEDR);
+module main(CLOCK_50, KEY, VGA_CLK, VGA_HS, VGA_VS, VGA_BLANK_N, VGA_SYNC_N, VGA_R, VGA_G, VGA_B, PS2_CLK, PS2_DAT, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, LEDR);
 	input CLOCK_50;
 	input [3:0] KEY;
 	inout PS2_CLK, PS2_DAT;
 	output VGA_CLK, VGA_HS,	VGA_VS, VGA_BLANK_N, VGA_SYNC_N;
 	output [9:0] VGA_R, VGA_G, VGA_B;
-	output [6:0] HEX0, HEX1, HEX2;
+	output [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6;
 	output [9:0] LEDR;
 	
 	//MAIN CIRCUIT VARS
@@ -14,6 +14,8 @@ module main(CLOCK_50, KEY, VGA_CLK, VGA_HS, VGA_VS, VGA_BLANK_N, VGA_SYNC_N, VGA
 	
 	//PLAYER VARS
 	wire inInputState, inUpdatePositionState, inSetAState, inSetDState;
+	wire [7:0] score;
+	wire [3:0] health;
 	wire [7:0] playerX;
 	wire [6:0] playerY;
 	
@@ -44,53 +46,51 @@ module main(CLOCK_50, KEY, VGA_CLK, VGA_HS, VGA_VS, VGA_BLANK_N, VGA_SYNC_N, VGA
 	wire [7:0] enemyX1, enemyX2, enemyX3, enemyX4;
 	wire [6:0] enemyY1, enemyY2, enemyY3, enemyY4;
 	wire [2:0] enemyColour1, enemyColour2, enemyColour3, enemyColour4;
-	wire [2:0] enemySpeed1, enemySpeed2, enemySpeed3, enemySpeed4;
-	//assign these here for now, but should be assigning them in difficulty changing modules or something like that
-	assign enemyColour1 = 3'b101;
-	assign enemyColour2 = 3'b011;
-	assign enemyColour3 = 3'b100;
-	assign enemyColour4 = 3'b110;
-	assign enemySpeed1 = 3'd4;
-	assign enemySpeed2 = 3'd2;
-	assign enemySpeed3 = 3'd3;
-	assign enemySpeed4 = 3'd1;
-	
+	wire [3:0] enemySpeed1, enemySpeed2, enemySpeed3, enemySpeed4;
+	wire [2:0] enemyHealthCurr1, enemyHealthCurr2, enemyHealthCurr3, enemyHealthCurr4;
+	wire [2:0] enemyHealthMax1, enemyHealthMax2, enemyHealthMax3, enemyHealthMax4;
+
 	//BULLET VARS
-	wire inResetStateB1, inUpdatePositionStateB1, topReachedB1;
+	wire inResetStateB1, inUpdatePositionStateB1, inWaitStateB1, topReachedB1;
 	wire [7:0] bulletX1;
 	wire [6:0] bulletY1;
+	wire activeB;
 	
 	//KEYBOARD VARS
-	wire w, aPressed, s, dPressed, left, right, up, down, spacePressed, enter;
+	wire w, a, s, d, left, right, up, down, space, enter;
 	
+	wire aPressed, dPressed, spacePressed;
+	assign aPressed = ~KEY[3];
+	assign dPressed = ~KEY[2];
+	assign spacePressed = ~KEY[1];
 	
 	//player
 	playerMovementFSM playerMover(clk, resetn, inInputState, inUpdatePositionState, inSetAState, inSetDState, aPressed, dPressed);
 	playData playerData(clk, resetn, inInputState, inUpdatePositionState, inSetAState, inSetDState, playerX, playerY, aPressed, dPressed);
 
 	//enemies
-	enemyControl enemyController1(clk, resetn, 1'b1, inUpdatePositionStateMain, bottomReachedE1, inResetStateE1, inUpdatePositionStateE1, beCollision1);
-	enemyDatapath enemyData1(clk, inResetStateE1, inUpdatePositionStateMain, 8'd14, enemyX1, enemyY1, bottomReachedE1, enemySpeed1);
+	enemyControl enemyController1(clk, resetn, 1'b1, inUpdatePositionStateMain, bottomReachedE1, inResetStateE1, inUpdatePositionStateE1, beCollision1, peCollision1, HEX3, enemyHealthMax1, enemyHealthCurr1);
+	enemyDatapath enemyData1(clk, inResetStateE1, inUpdatePositionStateMain, 8'd14, enemyX1, enemyY1, bottomReachedE1, 4'd2, enemySpeed1, resetn, 3'b101, enemyColour1, score);
 	
-	enemyControl enemyControl2(clk, resetn, 1'b1, inUpdatePositionStateMain, bottomReachedE2, inResetStateE2, inUpdatePositionStateE2, beCollision2);
-	enemyDatapath enemyData2(clk, inResetStateE2, inUpdatePositionStateMain, 8'd54, enemyX2, enemyY2, bottomReachedE2, enemySpeed2);
+	enemyControl enemyControl2(clk, resetn, 1'b1, inUpdatePositionStateMain, bottomReachedE2, inResetStateE2, inUpdatePositionStateE2, beCollision2, peCollision2, HEX4, enemyHealthMax2, enemyHealthCurr2);
+	enemyDatapath enemyData2(clk, inResetStateE2, inUpdatePositionStateMain, 8'd54, enemyX2, enemyY2, bottomReachedE2, 4'd3, enemySpeed2, resetn, 3'b011, enemyColour2, score);
 	
-	enemyControl enemyControl3(clk, resetn, 1'b1, inUpdatePositionStateMain, bottomReachedE3, inResetStateE3, inUpdatePositionStateE3, beCollision3);
-	enemyDatapath enemyData3(clk, inResetStateE3, inUpdatePositionStateMain, 8'd94, enemyX3, enemyY3, bottomReachedE3, enemySpeed3);
+	enemyControl enemyControl3(clk, resetn, 1'b1, inUpdatePositionStateMain, bottomReachedE3, inResetStateE3, inUpdatePositionStateE3, beCollision3, peCollision3, HEX5, enemyHealthMax3, enemyHealthCurr3);
+	enemyDatapath enemyData3(clk, inResetStateE3, inUpdatePositionStateMain, 8'd94, enemyX3, enemyY3, bottomReachedE3, 4'd4, enemySpeed3, resetn, 3'b010, enemyColour3, score);
 	
-	enemyControl enemyControl4(clk, resetn, 1'b1, inUpdatePositionStateMain, bottomReachedE4, inResetStateE4, inUpdatePositionStateE4, beCollision4);
-	enemyDatapath enemyData4(clk, inResetStateE4, inUpdatePositionStateMain, 8'd134, enemyX4, enemyY4, bottomReachedE4, enemySpeed4);
+	enemyControl enemyControl4(clk, resetn, 1'b1, inUpdatePositionStateMain, bottomReachedE4, inResetStateE4, inUpdatePositionStateE4, beCollision4, peCollision4, HEX6, enemyHealthMax4, enemyHealthCurr4);
+	enemyDatapath enemyData4(clk, inResetStateE4, inUpdatePositionStateMain, 8'd134, enemyX4, enemyY4, bottomReachedE4, 4'd1, enemySpeed4, resetn, 3'b110, enemyColour4, score);
 
 	//bullet
-	bulletControl bulletControl1(clk, resetn, inResetStateB1, inUpdatePositionStateB1, spacePressed, inUpdatePositionStateMain, topReachedB1, (beCollision1 || beCollision2 || beCollision3 || beCollision4));
-	bulletDatapath bulletData1(clk, inResetStateB1, inUpdatePositionStateB1, playerX + 3'd3, bulletX1, bulletY1, topReachedB1);
+	bulletControl bulletControl1(clk, resetn, inResetStateB1, inUpdatePositionStateB1, inWaitStateB1, spacePressed, inUpdatePositionStateMain, topReachedB1, (beCollision1 || beCollision2 || beCollision3 || beCollision4));
+	bulletDatapath bulletData1(clk, inResetStateB1, inUpdatePositionStateB1, inWaitStateB1, playerX + 3'd3, bulletX1, bulletY1, topReachedB1, activeB);
 	
 	//drawing
 	drawFSM mainDrawFSM(clk, resetn, objectToDraw, vgaPlot, doneDrawing, doneErasing, inEraseStateMain, inUpdatePositionStateMain);
 	displayHandler handler(playerX, enemyX1, enemyX2, enemyX3, enemyX4, bulletX1, playerY, enemyY1, enemyY2, enemyY3, enemyY4, bulletY1,
 								  5'd10, 5'd10, 5'd10, 5'd10, 5'd4, 5'd4, 3'b111, enemyColour1, enemyColour2, enemyColour3, enemyColour4, 3'b111, clk, resetn, objectToDraw,
 								  drawX, drawY, drawColour, drawWidth, drawHeight, peCollision1, peCollision2, peCollision3, peCollision4, beCollision1,
-								  beCollision2, beCollision3, beCollision4, inResetStateB1);
+								  beCollision2, beCollision3, beCollision4, activeB);
 								  
 	draw mainDraw(drawX, drawY, drawWidth, drawHeight, drawColour, clk, resetn, vgaPlot, xDraw, yDraw, colourDraw, doneDrawing, inEraseStateMain);
 	erase eraseModule(clk, resetn, vgaPlot, eraseX, eraseY, eraseColour, doneErasing, inEraseStateMain);
@@ -104,14 +104,14 @@ module main(CLOCK_50, KEY, VGA_CLK, VGA_HS, VGA_VS, VGA_BLANK_N, VGA_SYNC_N, VGA
 		  .PS2_CLK(PS2_CLK),
 		  .PS2_DAT(PS2_DAT),
 		  .w(w),
-		  .a(aPressed),
+		  .a(a),
 		  .s(s),
-		  .d(dPressed),
+		  .d(d),
 		  .left(left),
 		  .right(right),
 		  .up(up),
 		  .down(down),
-		  .space(spacePressed),
+		  .space(space),
 		  .enter(enter)
 		  );
 	
@@ -136,12 +136,9 @@ module main(CLOCK_50, KEY, VGA_CLK, VGA_HS, VGA_VS, VGA_BLANK_N, VGA_SYNC_N, VGA
 		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
 		defparam VGA.BACKGROUND_IMAGE = "black.mif";
 		
-		//decoder7 d1(HEX0, playerX[3:0]);
-		//decoder7 d2(HEX1, playerX[7:4]);
-		
 		//HEX display updates
-		scoreUpdate updateS(clk, resetn, (beCollision1 || beCollision2 || beCollision3 || beCollision4), HEX0, HEX1);
-		healthUpdate updateH(clk, resetn, (peCollision1 || peCollision2 || peCollision3 || peCollision4), HEX2);
+		scoreUpdate updateS(clk, resetn, (beCollision1 || beCollision2 || beCollision3 || beCollision4), HEX0, HEX1, inUpdatePositionStateMain, score);
+		healthUpdate updateH(clk, resetn, (peCollision1 || peCollision2 || peCollision3 || peCollision4), HEX2, inUpdatePositionStateMain);
 		
 		
 		//collision checks
