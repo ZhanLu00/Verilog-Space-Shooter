@@ -59,28 +59,32 @@ current_state.S_UPDATE_POSITION 1 0 1
 current_state.S_WAIT 1 1 0 
 
 State Machine - |main|enemyControl:enemyControl4|current_state
-Name current_state.S_RESET current_state.S_WAIT current_state.S_UPDATE_POSITION 
-current_state.S_RESET 0 0 0 
-current_state.S_UPDATE_POSITION 1 0 1 
-current_state.S_WAIT 1 1 0 
+Name current_state.S_GENERATE_DELAY current_state.S_WAIT current_state.S_UPDATE_POSITION current_state.S_RESET 
+current_state.S_RESET 0 0 0 0 
+current_state.S_UPDATE_POSITION 0 0 1 1 
+current_state.S_WAIT 0 1 0 1 
+current_state.S_GENERATE_DELAY 1 0 0 1 
 
 State Machine - |main|enemyControl:enemyControl3|current_state
-Name current_state.S_RESET current_state.S_WAIT current_state.S_UPDATE_POSITION 
-current_state.S_RESET 0 0 0 
-current_state.S_UPDATE_POSITION 1 0 1 
-current_state.S_WAIT 1 1 0 
+Name current_state.S_GENERATE_DELAY current_state.S_WAIT current_state.S_UPDATE_POSITION current_state.S_RESET 
+current_state.S_RESET 0 0 0 0 
+current_state.S_UPDATE_POSITION 0 0 1 1 
+current_state.S_WAIT 0 1 0 1 
+current_state.S_GENERATE_DELAY 1 0 0 1 
 
 State Machine - |main|enemyControl:enemyControl2|current_state
-Name current_state.S_RESET current_state.S_WAIT current_state.S_UPDATE_POSITION 
-current_state.S_RESET 0 0 0 
-current_state.S_UPDATE_POSITION 1 0 1 
-current_state.S_WAIT 1 1 0 
+Name current_state.S_GENERATE_DELAY current_state.S_WAIT current_state.S_UPDATE_POSITION current_state.S_RESET 
+current_state.S_RESET 0 0 0 0 
+current_state.S_UPDATE_POSITION 0 0 1 1 
+current_state.S_WAIT 0 1 0 1 
+current_state.S_GENERATE_DELAY 1 0 0 1 
 
 State Machine - |main|enemyControl:enemyController1|current_state
-Name current_state.S_RESET current_state.S_WAIT current_state.S_UPDATE_POSITION 
-current_state.S_RESET 0 0 0 
-current_state.S_UPDATE_POSITION 1 0 1 
-current_state.S_WAIT 1 1 0 
+Name current_state.S_GENERATE_DELAY current_state.S_WAIT current_state.S_UPDATE_POSITION current_state.S_RESET 
+current_state.S_RESET 0 0 0 0 
+current_state.S_UPDATE_POSITION 0 0 1 1 
+current_state.S_WAIT 0 1 0 1 
+current_state.S_GENERATE_DELAY 1 0 0 1 
 
 State Machine - |main|playData:playerData|xout
 Name xout.x1 xout.x4 xout.x3 xout.x2 

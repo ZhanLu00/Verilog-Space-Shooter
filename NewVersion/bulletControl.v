@@ -1,7 +1,7 @@
-module bulletControl(clk, resetn, inResetState,inUpdatePositionState, spacePressed, updatePosition, topReached, collidedWithEnemy);
+module bulletControl(clk, resetn, inResetState,inUpdatePositionState, inWaitState, spacePressed, updatePosition, topReached, collidedWithEnemy);
 	input clk, resetn, updatePosition, topReached, spacePressed, collidedWithEnemy;
 	
-	output reg inResetState, inUpdatePositionState; //booleans for being in a given state or not
+	output reg inResetState, inUpdatePositionState, inWaitState; //booleans for being in a given state or not
 
 	
 	reg [3:0] current_state, next_state; 
@@ -40,10 +40,11 @@ module bulletControl(clk, resetn, inResetState,inUpdatePositionState, spacePress
         // By default make all our signals 0
         inResetState <= 1'b0;
 		inUpdatePositionState <= 1'b0;
-		  
+		  inWaitState <= 0;
         case (current_state)
             S_RESET: inResetState <= 1'b1;
 			S_UPDATE_POSITION: inUpdatePositionState <= 1'b1;
+			S_WAIT: inWaitState <= 1;
         // default:    // don't need default since we already made sure all of our outputs were assigned a value at the start of the always block
         endcase
     end // enable_signals

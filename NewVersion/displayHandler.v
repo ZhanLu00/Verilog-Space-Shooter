@@ -11,7 +11,7 @@ module displayHandler(
 	 output [4:0] drawWidth, drawHeight,
 	 output reg pe_collision1, pe_collision2, pe_collision3,pe_collision4,
 	 output reg be_collision1, be_collision2, be_collision3, be_collision4,
-	 input inResetStateB1
+	 input activeB
 );
 	 reg [7:0] drawXOut;
 	 reg [6:0] drawYOut;
@@ -69,25 +69,25 @@ module displayHandler(
 	 always @(posedge clk)
 	 begin
 		//enemy vs. bullet
-		if (!inResetStateB1 && (bulletXIn + bulletWidth) >= enemyXIn1 && (bulletXIn + bulletWidth) <= (enemyXIn1 + enemyWidthIn) && (bulletYIn + bulletHeight) >= enemyYIn1
+		if (activeB && (bulletXIn + bulletWidth) >= enemyXIn1 && (bulletXIn + bulletWidth) <= (enemyXIn1 + enemyWidthIn) && (bulletYIn + bulletHeight) >= enemyYIn1
 		    && (bulletYIn + bulletHeight) <= (enemyYIn1 + enemyHeightIn))
 			 
 			be_collision1 <= 1;
 		else be_collision1 <= 0;
 		
-		if (!inResetStateB1 && (bulletXIn + bulletWidth) >= enemyXIn2 && (bulletXIn + bulletWidth) <= (enemyXIn2 + enemyWidthIn) && (bulletYIn + bulletHeight) >= enemyYIn2
+		if (activeB && (bulletXIn + bulletWidth) >= enemyXIn2 && (bulletXIn + bulletWidth) <= (enemyXIn2 + enemyWidthIn) && (bulletYIn + bulletHeight) >= enemyYIn2
 		    && (bulletYIn + bulletHeight) <= (enemyYIn2 + enemyHeightIn))
 			 
 			be_collision2 <= 1;
 		else be_collision2 <= 0;
 		
-		if (!inResetStateB1 && (bulletXIn + bulletWidth) >= enemyXIn3 && (bulletXIn + bulletWidth) <= (enemyXIn3 + enemyWidthIn) && (bulletYIn + bulletHeight) >= enemyYIn3
+		if (activeB && (bulletXIn + bulletWidth) >= enemyXIn3 && (bulletXIn + bulletWidth) <= (enemyXIn3 + enemyWidthIn) && (bulletYIn + bulletHeight) >= enemyYIn3
 		    && (bulletYIn + bulletHeight) <= (enemyYIn3 + enemyHeightIn))
 			 
 			be_collision3 <= 1;
 		else be_collision3 <= 0;
 		
-		if (!inResetStateB1 && (bulletXIn + bulletWidth) >= enemyXIn4 && (bulletXIn + bulletWidth) <= (enemyXIn4 + enemyWidthIn) && (bulletYIn + bulletHeight) >= enemyYIn4
+		if (activeB && (bulletXIn + bulletWidth) >= enemyXIn4 && (bulletXIn + bulletWidth) <= (enemyXIn4 + enemyWidthIn) && (bulletYIn + bulletHeight) >= enemyYIn4
 		    && (bulletYIn + bulletHeight) <= (enemyYIn4 + enemyHeightIn))
 			 
 			be_collision4 <= 1;
