@@ -1,0 +1,234 @@
+Analysis & Synthesis report for titlepage_t
+Tue Jul 30 21:07:23 2019
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis IP Cores Summary
+  6. Analysis & Synthesis Messages
+  7. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                              ;
++-----------------------------+---------------------------------------------+
+; Analysis & Synthesis Status ; Failed - Tue Jul 30 21:07:23 2019           ;
+; Quartus Prime Version       ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
+; Revision Name               ; titlepage_t                                 ;
+; Top-level Entity Name       ; display                                     ;
+; Family                      ; Cyclone V                                   ;
+; Logic utilization (in ALMs) ; N/A until Partition Merge                   ;
+; Total registers             ; N/A until Partition Merge                   ;
+; Total pins                  ; N/A until Partition Merge                   ;
+; Total virtual pins          ; N/A until Partition Merge                   ;
+; Total block memory bits     ; N/A until Partition Merge                   ;
+; Total PLLs                  ; N/A until Partition Merge                   ;
+; Total DLLs                  ; N/A until Partition Merge                   ;
++-----------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; display            ; titlepage_t        ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; OpenCore Plus hardware evaluation                                               ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; PowerPlay Power Optimization During Synthesis                                   ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                          ;
++--------+--------------+---------+--------------+--------------+------------------------------+-----------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance              ; IP Include File ;
++--------+--------------+---------+--------------+--------------+------------------------------+-----------------+
+; Altera ; ROM: 1-PORT  ; 17.0    ; N/A          ; N/A          ; |display|draw:d|titlepage:t1 ; titlepage.v     ;
++--------+--------------+---------+--------------+--------------+------------------------------+-----------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+    Info: Processing started: Tue Jul 30 21:07:08 2019
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off titlepage_t -c titlepage_t
+Info (125069): Default assignment values were changed in the current version of the Quartus Prime software -- changes to default assignments values are contained in file /s/appspace/quartus/quartus/linux64/assignment_defaults.qdf
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 2 entities, in source file titlepage_t.v
+    Info (12023): Found entity 1: display File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage_t.v Line: 1
+    Info (12023): Found entity 2: draw File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage_t.v Line: 52
+Info (12021): Found 1 design units, including 1 entities, in source file titlepage.v
+    Info (12023): Found entity 1: titlepage File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/NewVersion/vga_controller.v
+    Info (12023): Found entity 1: vga_controller File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/NewVersion/vga_controller.v Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/NewVersion/vga_address_translator.v
+    Info (12023): Found entity 1: vga_address_translator File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/NewVersion/vga_address_translator.v Line: 4
+Warning (10236): Verilog HDL Implicit Net warning at titlepage_t.v(44): created implicit net for "color" File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage_t.v Line: 44
+Warning (10236): Verilog HDL Implicit Net warning at titlepage_t.v(111): created implicit net for "x_out" File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage_t.v Line: 111
+Warning (10236): Verilog HDL Implicit Net warning at titlepage_t.v(112): created implicit net for "y_out" File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage_t.v Line: 112
+Info (12127): Elaborating entity "display" for the top level hierarchy
+Info (12128): Elaborating entity "draw" for hierarchy "draw:d" File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage_t.v Line: 44
+Warning (10230): Verilog HDL assignment warning at titlepage_t.v(90): truncated value with size 32 to match size of target (8) File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage_t.v Line: 90
+Warning (10230): Verilog HDL assignment warning at titlepage_t.v(94): truncated value with size 32 to match size of target (7) File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage_t.v Line: 94
+Warning (10230): Verilog HDL assignment warning at titlepage_t.v(111): truncated value with size 8 to match size of target (1) File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage_t.v Line: 111
+Warning (10230): Verilog HDL assignment warning at titlepage_t.v(112): truncated value with size 7 to match size of target (1) File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage_t.v Line: 112
+Info (12128): Elaborating entity "titlepage" for hierarchy "draw:d|titlepage:t1" File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage_t.v Line: 108
+Info (12128): Elaborating entity "altsyncram" for hierarchy "draw:d|titlepage:t1|altsyncram:altsyncram_component" File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage.v Line: 82
+Info (12130): Elaborated megafunction instantiation "draw:d|titlepage:t1|altsyncram:altsyncram_component" File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage.v Line: 82
+Info (12133): Instantiated megafunction "draw:d|titlepage:t1|altsyncram:altsyncram_component" with the following parameter: File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage.v Line: 82
+    Info (12134): Parameter "address_aclr_a" = "NONE"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "./csc258-project-master/project-art/titlepage2.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "32768"
+    Info (12134): Parameter "operation_mode" = "ROM"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "widthad_a" = "15"
+    Info (12134): Parameter "width_a" = "3"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_7sj1.tdf
+    Info (12023): Found entity 1: altsyncram_7sj1 File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/db/altsyncram_7sj1.tdf Line: 32
+Info (12128): Elaborating entity "altsyncram_7sj1" for hierarchy "draw:d|titlepage:t1|altsyncram:altsyncram_component|altsyncram_7sj1:auto_generated" File: /s/appspace/quartus/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Error (127001): Can't find Memory Initialization File or Hexadecimal (Intel-Format) File ./csc258-project-master/project-art/titlepage2.mif for ROM instance ALTSYNCRAM File: /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/titlepage.v Line: 82
+Error (12152): Can't elaborate user hierarchy "draw:d|titlepage:t1|altsyncram:altsyncram_component|altsyncram_7sj1:auto_generated" File: /s/appspace/quartus/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (144001): Generated suppressed messages file /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/output_files/titlepage_t.map.smsg
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 8 warnings
+    Error: Peak virtual memory: 993 megabytes
+    Error: Processing ended: Tue Jul 30 21:07:23 2019
+    Error: Elapsed time: 00:00:15
+    Error: Total CPU time (on all processors): 00:00:24
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /h/u8/c9/00/luzhan1/Desktop/csc258/csc258-project-master/project-art/output_files/titlepage_t.map.smsg.
+
+
