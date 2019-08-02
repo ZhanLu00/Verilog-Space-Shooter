@@ -1,0 +1,57 @@
+--lpm_mux CBX_DECLARE_ALL_CONNECTED_PORTS="OFF" DEVICE_FAMILY="Cyclone V" LPM_SIZE=4 LPM_WIDTH=3 LPM_WIDTHS=2 data result sel
+--VERSION_BEGIN 18.0 cbx_lpm_mux 2018:04:24:18:04:18:SJ cbx_mgl 2018:04:24:18:08:49:SJ  VERSION_END
+
+
+-- Copyright (C) 2018  Intel Corporation. All rights reserved.
+--  Your use of Intel Corporation's design tools, logic functions 
+--  and other software and tools, and its AMPP partner logic 
+--  functions, and any output files from any of the foregoing 
+--  (including device programming or simulation files), and any 
+--  associated documentation or information are expressly subject 
+--  to the terms and conditions of the Intel Program License 
+--  Subscription Agreement, the Intel Quartus Prime License Agreement,
+--  the Intel FPGA IP License Agreement, or other applicable license
+--  agreement, including, without limitation, that your use is for
+--  the sole purpose of programming logic devices manufactured by
+--  Intel and sold by Intel or its authorized distributors.  Please
+--  refer to the applicable agreement for further details.
+
+
+
+--synthesis_resources = lut 3 
+SUBDESIGN mux_jfb
+( 
+	data[11..0]	:	input;
+	result[2..0]	:	output;
+	sel[1..0]	:	input;
+) 
+VARIABLE
+	l1_w0_n0_mux_dataout	:	WIRE;
+	l1_w0_n1_mux_dataout	:	WIRE;
+	l1_w1_n0_mux_dataout	:	WIRE;
+	l1_w1_n1_mux_dataout	:	WIRE;
+	l1_w2_n0_mux_dataout	:	WIRE;
+	l1_w2_n1_mux_dataout	:	WIRE;
+	l2_w0_n0_mux_dataout	:	WIRE;
+	l2_w1_n0_mux_dataout	:	WIRE;
+	l2_w2_n0_mux_dataout	:	WIRE;
+	data_wire[17..0]	: WIRE;
+	result_wire_ext[2..0]	: WIRE;
+	sel_wire[3..0]	: WIRE;
+
+BEGIN 
+	l1_w0_n0_mux_dataout = sel_wire[0..0] & data_wire[3..3] # !(sel_wire[0..0]) & data_wire[0..0];
+	l1_w0_n1_mux_dataout = sel_wire[0..0] & data_wire[9..9] # !(sel_wire[0..0]) & data_wire[6..6];
+	l1_w1_n0_mux_dataout = sel_wire[0..0] & data_wire[4..4] # !(sel_wire[0..0]) & data_wire[1..1];
+	l1_w1_n1_mux_dataout = sel_wire[0..0] & data_wire[10..10] # !(sel_wire[0..0]) & data_wire[7..7];
+	l1_w2_n0_mux_dataout = sel_wire[0..0] & data_wire[5..5] # !(sel_wire[0..0]) & data_wire[2..2];
+	l1_w2_n1_mux_dataout = sel_wire[0..0] & data_wire[11..11] # !(sel_wire[0..0]) & data_wire[8..8];
+	l2_w0_n0_mux_dataout = sel_wire[3..3] & data_wire[13..13] # !(sel_wire[3..3]) & data_wire[12..12];
+	l2_w1_n0_mux_dataout = sel_wire[3..3] & data_wire[15..15] # !(sel_wire[3..3]) & data_wire[14..14];
+	l2_w2_n0_mux_dataout = sel_wire[3..3] & data_wire[17..17] # !(sel_wire[3..3]) & data_wire[16..16];
+	data_wire[] = ( l1_w2_n1_mux_dataout, l1_w2_n0_mux_dataout, l1_w1_n1_mux_dataout, l1_w1_n0_mux_dataout, l1_w0_n1_mux_dataout, l1_w0_n0_mux_dataout, data[]);
+	result[] = result_wire_ext[];
+	result_wire_ext[] = ( l2_w2_n0_mux_dataout, l2_w1_n0_mux_dataout, l2_w0_n0_mux_dataout);
+	sel_wire[] = ( sel[1..1], B"00", sel[0..0]);
+END;
+--VALID FILE
