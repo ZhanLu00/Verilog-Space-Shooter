@@ -1,2 +1,0 @@
-Warning (10268): Verilog HDL information at draw.v(42): always construct contains both blocking and non-blocking assignments File: C:/Users/UserV/Desktop/School/SecondYear/258/Project/Version2 Files/QuartusProjectFile/258ProjectRepo/CurrentVersionTest/NewVersion/draw.v Line: 42
-Warning (10268): Verilog HDL information at erase.v(20): always construct contains both blocking and non-blocking assignments File: C:/Users/UserV/Desktop/School/SecondYear/258/Project/Version2 Files/QuartusProjectFile/258ProjectRepo/CurrentVersionTest/NewVersion/erase.v Line: 20
