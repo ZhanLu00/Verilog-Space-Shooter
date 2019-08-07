@@ -52,66 +52,66 @@ R10
 R11
 ndisplay@handler
 vdraw
-R0
+!s110 1564777992
 !i10b 1
-!s100 e0VWR5SHVKANiG7KeHMGM0
-I[:56AcNDa^Vi1e4cC43fJ3
+!s100 X@;oInZfhNLan=af2IO=?0
+IER8DHz277K5oj2DaCHK971
 R1
-R2
-R3
-R4
-R5
-L0 255
-R6
-r1
-!s85 0
-31
-R7
-R8
-R9
-!i113 1
-R10
-R11
-vdrawFSM
-R0
-!i10b 1
-!s100 9O]n0VYKQS04TkGdzOQ0Y0
-I^YFFIkZ8cGEVUhGhe1?[N3
-R1
-R2
-R3
-R4
-R5
-L0 139
-R6
-r1
-!s85 0
-31
-R7
-R8
-R9
-!i113 1
-R10
-R11
-ndraw@f@s@m
-venemyControl
-Z12 !s110 1564425445
-!i10b 1
-!s100 oa7]`72RBBN1mF?N0?H?^1
-IM8hNz77hPLnon@C2j=OC92
-R1
-Z13 dC:/Users/UserV/Desktop/School/SecondYear/258/Project/Version2 Files/QuartusProjectFile/258ProjectRepo/CurrentVersionTest/NewVersion
-Z14 w1564425392
-Z15 8enemyControl.v
-Z16 FenemyControl.v
+Z12 dC:/Users/UserV/Desktop/School/SecondYear/258/Project/Version2 Files/QuartusProjectFile/258ProjectRepo/csc258-project/csc258-project/NewVersion
+Z13 w1564772932
+8draw.v
+Fdraw.v
 L0 1
 R6
 r1
 !s85 0
 31
-Z17 !s108 1564425445.000000
-Z18 !s107 enemyControl.v|
-Z19 !s90 -reportprogress|300|-timescale|1ns/1ns|enemyControl.v|
+!s108 1564777992.000000
+!s107 draw.v|
+!s90 -reportprogress|300|-timescale|1ns/1ns|draw.v|
+!i113 1
+R10
+R11
+vdrawFSM
+!s110 1564778083
+!i10b 1
+!s100 SO;0^ozU4anC?5[LBm9n=3
+I;@j_l=Ekf:JhU^@UXbiAY3
+R1
+R12
+R13
+8drawFSM.v
+FdrawFSM.v
+L0 1
+R6
+r1
+!s85 0
+31
+!s108 1564778083.000000
+!s107 drawFSM.v|
+!s90 -reportprogress|300|-timescale|1ns/1ns|drawFSM.v|
+!i113 1
+R10
+R11
+ndraw@f@s@m
+venemyControl
+Z14 !s110 1564425445
+!i10b 1
+!s100 oa7]`72RBBN1mF?N0?H?^1
+IM8hNz77hPLnon@C2j=OC92
+R1
+Z15 dC:/Users/UserV/Desktop/School/SecondYear/258/Project/Version2 Files/QuartusProjectFile/258ProjectRepo/CurrentVersionTest/NewVersion
+Z16 w1564425392
+Z17 8enemyControl.v
+Z18 FenemyControl.v
+L0 1
+R6
+r1
+!s85 0
+31
+Z19 !s108 1564425445.000000
+Z20 !s107 enemyControl.v|
+Z21 !s90 -reportprogress|300|-timescale|1ns/1ns|enemyControl.v|
 !i113 1
 R10
 R11
@@ -159,24 +159,46 @@ R9
 !i113 1
 R10
 R11
-vLFSR
+vhealthUpdate
+!s110 1564778550
+!i10b 1
+!s100 zF26EbJHj^=ZiNbEZYPfG1
+Ik6XkE2jS>bEoJOO=gAfcb1
+R1
 R12
+R13
+8healthUpdate.v
+FhealthUpdate.v
+L0 1
+R6
+r1
+!s85 0
+31
+!s108 1564778550.000000
+!s107 healthUpdate.v|
+!s90 -reportprogress|300|-timescale|1ns/1ns|healthUpdate.v|
+!i113 1
+R10
+R11
+nhealth@update
+vLFSR
+R14
 !i10b 1
 !s100 iU[eUY0[1NbT:zN_K7]og0
 IezXN98DQJKUDiWRB]NWiW0
 R1
-R13
-R14
 R15
 R16
+R17
+R18
 L0 106
 R6
 r1
 !s85 0
 31
-R17
-R18
 R19
+R20
+R21
 !i113 1
 R10
 R11
@@ -189,16 +211,16 @@ I?GoRf6TF_2BzU7JDOW^;i2
 R1
 dC:/Users/UserV/Desktop/School/SecondYear/258/Project/Version2 Files/QuartusProjectFile/258ProjectRepo/csc258-project/NewVersion
 w1564424112
-R15
-R16
+R17
+R18
 L0 121
 R6
 r1
 !s85 0
 31
 !s108 1564424114.000000
-R18
-R19
+R20
+R21
 !i113 1
 R10
 R11
@@ -268,3 +290,25 @@ R9
 R10
 R11
 nplayer@movement@f@s@m
+vscoreUpdate
+!s110 1564778398
+!i10b 1
+!s100 ??iUd;T9eUzM:4a1[iOH>1
+IdR>V>Rdk6>4hAcYnI>HYY3
+R1
+R12
+R13
+8scoreUpdate.v
+FscoreUpdate.v
+L0 1
+R6
+r1
+!s85 0
+31
+!s108 1564778398.000000
+!s107 scoreUpdate.v|
+!s90 -reportprogress|300|-timescale|1ns/1ns|scoreUpdate.v|
+!i113 1
+R10
+R11
+nscore@update

@@ -58,7 +58,8 @@ module enemyControl(clk, resetn, enable, updatePosition, bottomReached, inResetS
             current_state <= S_RESET;
 				delayCounter <= 32'd25000000;
 				delay <= 4'd1;
-
+				maxHealth <= 3'd1;
+				currHealth <= maxHealth;
 		  end	
 		  else begin
 

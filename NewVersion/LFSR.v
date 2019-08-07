@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-// File downloaded from http://www.nandland.com
+// File downloaded from http://www.nandland.com (THIS IS NOT OUR CODE ALL CREDIT GOES TO ORIGINAL OWNER)
 ///////////////////////////////////////////////////////////////////////////////
 // Description: 
 // A LFSR or Linear Feedback Shift Register is a quick and easy way to generate

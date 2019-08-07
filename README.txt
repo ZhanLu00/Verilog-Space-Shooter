@@ -1,6 +1,6 @@
 Names: Viktar Chyhir and Zhan Lu
 
-Project Name: Space Invaders
+Project Name: Space Invaders-Special Edition
 
 Project Description: 
 This is a simple game with a similar style to the classic Space Invaders. The player controls a ship 
