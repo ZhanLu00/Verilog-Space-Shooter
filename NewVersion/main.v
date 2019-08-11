@@ -60,9 +60,9 @@ module main(CLOCK_50, KEY, VGA_CLK, VGA_HS, VGA_VS, VGA_BLANK_N, VGA_SYNC_N, VGA
 	wire w, a, s, d, left, right, up, down, space, enter;
 	
 	wire aPressed, dPressed, spacePressed;
-	assign aPressed = ~KEY[3];
-	assign dPressed = ~KEY[2];
-	assign spacePressed = ~KEY[1];
+	//assign aPressed = ~KEY[3];
+	//assign dPressed = ~KEY[2];
+	//assign spacePressed = ~KEY[1];
 	
 	//player
 	playerMovementFSM playerMover(clk, resetn, inInputState, inUpdatePositionState, inSetAState, inSetDState, aPressed, dPressed);
@@ -108,14 +108,14 @@ module main(CLOCK_50, KEY, VGA_CLK, VGA_HS, VGA_VS, VGA_BLANK_N, VGA_SYNC_N, VGA
 		  .PS2_CLK(PS2_CLK),
 		  .PS2_DAT(PS2_DAT),
 		  .w(w),
-		  .a(a),
+		  .a(aPressed),
 		  .s(s),
-		  .d(d),
+		  .d(dPressed),
 		  .left(left),
 		  .right(right),
 		  .up(up),
 		  .down(down),
-		  .space(space),
+		  .space(spacePressed),
 		  .enter(enter)
 		  );
 	
